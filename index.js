@@ -21,7 +21,7 @@ app.post("/register", (req, res) => {
 
 app.post("/login", (req, res) => {
   const { email, pass } = req.body;
-  const found = users.filter(
+  const found = users.find(
     (value) => value.email === email && value.pass === pass
   );
   res.json(found);
