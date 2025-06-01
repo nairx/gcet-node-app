@@ -24,5 +24,8 @@ app.post("/login", (req, res) => {
   const found = users.find(
     (value) => value.email === email && value.pass === pass
   );
-  res.json(found);
+  if (!found) {
+    res.json({message:"User not found"})
+  }
+  res.json({...found,token:"123"});
 });
