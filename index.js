@@ -19,6 +19,6 @@ app.use("/products", productRouter);
 app.use("/orders",orderRouter)
 
 app.listen(8080, () => {
-  mongoose.connect(`${MONGO_URI}`);
+  mongoose.connect(MONGO_URI);
   console.log("Server StartedD");
 });
