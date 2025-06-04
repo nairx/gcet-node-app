@@ -18,7 +18,13 @@ app.use("/users", userRouter);
 app.use("/products", productRouter);
 app.use("/orders",orderRouter)
 
-app.listen(8080, () => {
-  mongoose.connect(MONGO_URI);
-  console.log("Server StartedD");
-});
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    app.listen(8080, () => {
+      console.log("Server Started on port 8080");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
