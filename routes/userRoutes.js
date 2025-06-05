@@ -18,6 +18,7 @@ userRouter.post("/login", async (req, res) => {
   const result = await userModel.findOne({ email, pass });
   if (!result) return res.json({ message: "Invalid user or password" });
   return res.json(result);
+  console.log(result)
 });
 
 
