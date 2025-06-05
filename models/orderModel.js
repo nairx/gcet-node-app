@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 const orderSchema = mongoose.Schema({
   email: { type: String },
-  items: { type: Object },
   orderValue: { type: Number },
   orderDate: { type: Date,default: Date.now },
 });
