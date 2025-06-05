@@ -9,4 +9,10 @@ orderRouter.post("/new", async (req, res) => {
   return res.json(result);
 });
 
+orderRouter.get("/:id", async (req, res) => {
+  const email = req.params.id;
+  const result = await orderModel.find({ email });
+  return res.json(result);
+});
+
 export default orderRouter
