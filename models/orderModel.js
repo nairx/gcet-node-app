@@ -3,7 +3,7 @@ const orderSchema = mongoose.Schema({
   email: { type: String },
   items: { type: Object },
   orderValue: { type: Number },
-  orderDate: { type: Date },
+  orderDate: { type: Date,default: Date.now },
 });
 // const product = mongoose.model("Product", productSchema);
 
