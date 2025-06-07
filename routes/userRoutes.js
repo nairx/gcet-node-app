@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 const SECRET_KEY = "helloworld";
 
 userRouter.post("/register", async (req, res) => {
-  const { name, email, pass } = req.body;
+  const { name, email, pass } = await req.body;
   // const hashpassword = await bcrypt.hash(pass, 10);
   const result = await userModel.create({
     name: name,
