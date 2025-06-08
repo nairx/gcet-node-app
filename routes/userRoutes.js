@@ -11,7 +11,7 @@ userRouter.get("/all", auth, authorize, async (req, res) => {
   res.json(users);
 });
 
-userRouter.delete("/:id", async (req, res) => {
+userRouter.delete("/:id", auth, authorize,  async (req, res) => {
   const id = req.params.id;
   const user = await userModel.findByIdAndDelete(id);
   res.json(user);
