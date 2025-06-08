@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
       token = token.split(" ")[1]; 
       let user = jwt.verify(token, SECRET_KEY);
       // req.userId = user.id;
-      // req.role = user.role;
+      req.role = user.role;
       req.email = user.email;
       next();
     } else {
