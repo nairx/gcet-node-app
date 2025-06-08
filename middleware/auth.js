@@ -5,7 +5,7 @@ const auth = (req, res, next) => {
   try {
     let token = req.headers.authorization;
     if (token) {
-      token = token.split(" ")[1]; 
+      token = token.split(" ")[1];
       let user = jwt.verify(token, SECRET_KEY);
       // req.userId = user.id;
       req.role = user.role;
@@ -20,4 +20,17 @@ const auth = (req, res, next) => {
   }
 };
 
-export default auth
+export const authorize = (req, res, next) => {
+  try {
+    if (req.role === "admin") {
+      next();
+    } else {
+      res.status(401).json({ message: "Admin access is needed" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({ message: "Unauthorized" });
+  }
+};
+
+export default auth;

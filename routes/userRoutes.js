@@ -4,9 +4,9 @@ import bcrypt from "bcryptjs";
 const userRouter = express.Router();
 import jwt from "jsonwebtoken";
 const SECRET_KEY = "helloworld";
-import auth from "../middleware/auth.js";
+import auth, { authorize } from "../middleware/auth.js";
 
-userRouter.get("/all", auth, async (req, res) => {
+userRouter.get("/all", auth, authorize, async (req, res) => {
   const users = await userModel.find();
   res.json(users);
 });
